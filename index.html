@@ -51,6 +51,37 @@
       .certificate-table td { font-size: 9pt; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
     }
+
+    /* --- LOADING ANIMATION CSS --- */
+    #divLoading {
+        display: none;
+    }
+    #divLoading.show {
+        display: block;
+        position: fixed;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.4); /* Transparent Black Overlay */
+        left: 0; bottom: 0; right: 0; top: 0;
+    }
+
+    /* CSS Spinner (Circle Animation) */
+    .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        border: 6px solid #f3f3f3; /* Light grey */
+        border-top: 6px solid #f79a32; /* Orange color matching your header */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
   </style>
 </head>
 <body>
@@ -188,7 +219,8 @@
     </footer>
   </div>
 
-  <h2 id="loading-msg" style="text-align:center; margin-top:50px; font-family:sans-serif;">Fetching Details...</h2>
+  <div id="divLoading" class="show">
+    <div class="spinner"></div> </div>
 
   <script type="module" src="js/verify.js"></script>
 </body>
