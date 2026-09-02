@@ -1,0 +1,22 @@
+body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
+.container { max-width: 900px; margin: auto; background: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px; }
+h2 { text-align: center; color: #333; }
+.form-group { margin-bottom: 15px; }
+label { display: block; font-weight: bold; margin-bottom: 5px; color: #444; }
+input { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+button { padding: 10px 20px; background: #2f628f; color: white; border: none; cursor: pointer; font-size: 16px; border-radius: 4px; width: 100%; }
+button:hover { background: #1d4365; }
+#loginSection { display: block; max-width: 400px; margin: 50px auto; }
+#adminSection { display: none; }
+.grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.save-btn { margin-top: 15px; background: #f79a32; font-weight: bold; }
+.save-btn:hover { background: #dca336; }
+#qrcode-container { margin-top: 30px; text-align: center; display: none; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px dashed #ccc; }
+#qrcode { display: flex; justify-content: center; margin: 15px 0; }
+#qr-link { display: inline-block; color: #2f628f; font-weight: bold; text-decoration: none; word-break: break-all; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+th { background: #f79a32; color: white; }
+.delete-btn { background: #e74c3c; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 3px; width: auto; }
+.view-btn { background: #27ae60; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 3px; margin-right: 5px; width: auto; }
+.list-title { margin-top: 40px; border-bottom: 2px solid #eee; padding-bottom: 10px; }

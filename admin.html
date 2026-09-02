@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - Certificate Data</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div id="loginSection">
+      <h2>Admin Login</h2>
+      <div class="form-group"><label>Email</label><input type="email" id="username" placeholder="admin@example.com"></div>
+      <div class="form-group"><label>Password</label><input type="password" id="password"></div>
+      <button id="loginBtn">Login</button>
+    </div>
+
+    <!-- Type Selection Section after Login -->
+    <div id="typeSelectSection" style="display: none; text-align: center; max-width: 400px; margin: 50px auto;">
+      <h2>प्रमाण पत्र का प्रकार चुनें</h2>
+      <button class="save-btn" id="btnNivas" style="margin-bottom: 15px; background: #2f628f;">निवास प्रमाण पत्र</button>
+      <button class="save-btn" id="btnJati">जाति प्रमाण पत्र</button>
+      <button class="save-btn" id="logoutBtn1" style="background: #e74c3c; margin-top: 20px;">Logout</button>
+    </div>
+
+    <div id="adminSection" style="display: none;">
+      <h2 id="panelTitle">Data Entry Panel</h2>
+      <div class="grid-form">
+        <div class="form-group"><label>प्रमाण पत्र संख्या</label><input type="text" id="cert_no"></div>
+        <div class="form-group"><label>आवेदन संख्या</label><input type="text" id="app_no"></div>
+        <div class="form-group"><label>प्रमाण पत्र जारी दिनांक</label><input type="text" id="issue_date"></div>
+        <div class="form-group"><label>प्रमाण पत्र का प्रकार</label><input type="text" id="cert_type" readonly></div>
+        <div class="form-group" id="caste_field_group" style="display: none;"><label>जाति/उप‌जाति</label><input type="text" id="caste_subcaste" placeholder="पिछड़ी/अहीर"></div>
+        <div class="form-group"><label>नाम</label><input type="text" id="name"></div>
+        <div class="form-group"><label>पिता/पति का नाम</label><input type="text" id="father_name"></div>
+        <div class="form-group"><label>ग्राम</label><input type="text" id="village"></div>
+        <div class="form-group"><label>तहसील</label><input type="text" id="tehsil" value="मोहम्दाबाद"></div>
+        <div class="form-group"><label>जनपद</label><input type="text" id="district" value="मऊ"></div>
+        <div class="form-group"><label>जारी कर्ता अधिकारी</label><input type="text" id="issuer"></div>
+        <div class="form-group"><label>जाँच अधिकारी</label><input type="text" id="verifier"></div>
+      </div>
+      <button class="save-btn" id="saveBtn">Save & Generate QR</button>
+      <button class="save-btn" id="backBtn" style="background: #f39c12; margin-top: 10px;">Back to Type Selection</button>
+      <button class="save-btn" id="logoutBtn2" style="background: #e74c3c; margin-top: 10px;">Logout</button>
+      
+      <div id="qrcode-container">
+        <h3>Generated QR Code</h3>
+        <div id="qrcode"></div>
+        <a id="qr-link" href="#" target="_blank">Direct Verify Link</a>
+      </div>
+      
+      <h3 class="list-title">Saved Data List</h3>
+      <table>
+        <thead><tr><th>Cert No</th><th>Name</th><th>Type</th><th>Action</th></tr></thead>
+        <tbody id="dataTable"></tbody>
+      </table>
+    </div>
+  </div>
+  
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

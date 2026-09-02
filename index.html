@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VERIFICATION</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: Verdana, Arial, sans-serif; background: #e5e5e5; color: #111; }
+    .page-bg { min-height: 100vh; background-color: #e5e5e5; background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.05) 1px, transparent 0); background-size: 8px 8px; }
+    .site-header { width: calc(100% - 16px); margin: 42px auto 0; background: #f79a32; border: 1px solid rgba(0, 0, 0, 0.08); }
+    .header-inner { max-width: 1280px; min-height: 72px; margin: 0 auto; padding: 8px 16px; display: flex; align-items: center; gap: 18px; }
+    .logo-wrap img { width: 185px; height: auto; display: block; }
+    .top-nav { display: flex; align-items: center; gap: 18px; flex: 1; flex-wrap: wrap; }
+    .top-nav a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 700; padding: 8px 0; white-space: nowrap; }
+    .top-nav a.active { background: #2f628f; border: 2px solid #c7d3df; border-radius: 3px; padding: 7px 12px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15); }
+    .close-btn { border: 0; background: transparent; padding: 0; cursor: pointer; }
+    .close-btn img { width: 38px; height: 38px; display: block; }
+    .content-area { padding: 26px 16px 18px; }
+    .certificate-section h1 { text-align: center; font-size: 23px; margin: 0 0 22px; font-family: "Arial Unicode MS", Arial, sans-serif; font-weight: 700; }
+    .certificate-table { width: 74%; margin: 0 auto; border-collapse: collapse; background: rgba(255, 255, 255, 0.25); }
+    .certificate-table td { border: 1px solid #222; padding: 4px 6px; font-size: 10pt; line-height: 1.05; vertical-align: middle; }
+    .certificate-table td:first-child { width: 33%; }
+    .table-head, .section-title, .verification-time { background: #cfcfcf; }
+    .remark-title { font-size: 18px !important; }
+    .verification-time { text-align: right; padding-right: 14px !important; }
+    .site-footer { margin-top: 22px; }
+    .footer-top { width: calc(100% - 16px); margin: 0 auto; background: #dca336; min-height: 125px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 24px; }
+    .footer-links { display: flex; align-items: center; gap: 0; }
+    .footer-links a { display: block; }
+    .footer-links img { width: 138px; height: 90px; display: block; }
+    .nic-block { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .nic-block img { width: 178px; height: auto; display: block; }
+    .nic-text { font-size: 12px; color: #111; line-height: 1.3; }
+    .best-view { margin-top: 4px; font-weight: 700; }
+    .goto-top img { width: 44px; height: 44px; display: block; }
+    .disclaimer { width: 100%; background: antiquewhite; padding: 8px 10px; font-size: 12px; text-align: center; }
+
+    @media (max-width: 1100px) {
+      .header-inner { align-items: flex-start; flex-direction: column; }
+      .close-btn { align-self: flex-end; margin-top: -58px; }
+      .certificate-table { width: 94%; }
+      .footer-top { flex-direction: column; }
+    }
+    @media (max-width: 700px) {
+      .site-header { margin-top: 12px; }
+      .top-nav { gap: 10px; }
+      .top-nav a { font-size: 12px; }
+      .certificate-section h1 { font-size: 20px; }
+      .certificate-table td { font-size: 9pt; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-bg" id="main-content" style="display: none;">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="logo-wrap">
+          <img src="images/logo6.png" alt="Logo">
+        </div>
+
+        <nav class="top-nav">
+          <a class="active" href="#">मुख्य पृष्ठ</a>
+          <a href="#">सेवाएं</a>
+          <a href="#">सेवाकेन्द्र</a>
+          <a href="#">प्रोग्रेस मॉनिटरिंग</a>
+          <a href="#">वित्तीय प्रबंधन</a>
+          <a href="#">विभागीय एकीकरण</a>
+          <a href="#">संपर्क करें</a>
+        </nav>
+
+        <button class="close-btn" type="button" onclick="window.location.href='admin.html'" title="Back">
+          <img src="images/close-icon-png.png" alt="Close">
+        </button>
+      </div>
+    </header>
+
+    <main class="content-area">
+      <section class="certificate-section">
+        <h1>निर्गत प्रमाण पत्र का विवरण</h1>
+
+        <table class="certificate-table">
+          <tr>
+            <td class="table-head" colspan="2"></td>
+          </tr>
+          <tr>
+            <td><strong>आवेदन संख्या</strong></td>
+            <td id="d_app_no"></td>
+          </tr>
+          <tr>
+            <td>प्रमाण पत्र संख्या :</td>
+            <td id="d_cert_no"></td>
+          </tr>
+          <tr>
+            <td>प्रमाण पत्र जारी दिनांक</td>
+            <td id="d_issue_date"></td>
+          </tr>
+          <tr>
+            <td>प्रमाण पत्र का प्रकार</td>
+            <td id="d_cert_type"></td>
+          </tr>
+          <tr>
+            <td>नाम</td>
+            <td id="d_name"></td>
+          </tr>
+          <tr>
+            <td>पिता/पति का नाम</td>
+            <td id="d_father_name"></td>
+          </tr>
+          <tr id="d_caste_row" style="display: none;">
+            <td>जाति/उप‌जाति</td>
+            <td id="d_caste_subcaste"></td>
+          </tr>
+          <tr>
+            <td class="section-title">वर्तमान पता</td>
+            <td class="section-title">*दिनांक 01/01/2015 व उसके बाद के आवेदनों हेतु</td>
+          </tr>
+          <tr>
+            <td>मकान नम्बर</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>ग्राम</td>
+            <td id="d_village"></td>
+          </tr>
+          <tr>
+            <td>मौहल्ला/पोस्ट</td>
+            <td> </td>
+          </tr>
+          <tr>
+            <td>तहसील</td>
+            <td id="d_tehsil"></td>
+          </tr>
+          <tr>
+            <td>जनपद</td>
+            <td id="d_district"></td>
+          </tr>
+          <tr>
+            <td class="section-title"><strong>सम्बन्घित अधिकारी</strong></td>
+            <td class="section-title"></td>
+          </tr>
+          <tr>
+            <td>जारी कर्ता अधिकारी</td>
+            <td id="d_issuer"></td>
+          </tr>
+          <tr>
+            <td>जाँच अधिकारी</td>
+            <td id="d_verifier"></td>
+          </tr>
+          <tr>
+            <td class="remark-title">Remark</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="verification-time" colspan="2" id="current_time">Certificate Verification as on : </td>
+          </tr>
+        </table>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-links">
+          <a href="#"><img src="images/g4.png" alt="DigiLocker"></a>
+          <a href="#"><img src="images/g3.png" alt="India Gov"></a>
+          <a href="#"><img src="images/g1.png" alt="Digital India"></a>
+          <a href="#"><img src="images/opengov-icon.png" alt="Open Gov"></a>
+        </div>
+
+        <div class="nic-block">
+          <img src="images/nicmainlogo.png" alt="NIC Logo">
+          <div class="nic-text">
+            <div>राष्ट्रीय सूचना विज्ञान केन्द्र (एन.आई.सी.), उत्तर प्रदेश राज्य इकाई, लखनऊ द्वारा विकसित</div>
+            <div class="best-view">Best Viewed in IE11 And Above.</div>
+          </div>
+        </div>
+
+        <a class="goto-top" href="#top" aria-label="Go to top">
+          <img src="images/gototop.png" alt="Go to top">
+        </a>
+      </div>
+
+      <div class="disclaimer">
+        <b>Disclaimer:</b> Content on this website is owned by Centre for e-Governance (CeG), Department of IT &amp; Electronics, Govt. of Uttar Pradesh. Every effort has been made to ensure accuracy of data on this website. However these need to be verified by and supplemented with documents issued finally by the concerned authorities.
+      </div>
+    </footer>
+  </div>
+
+  <h2 id="loading-msg" style="text-align:center; margin-top:50px; font-family:sans-serif;">Fetching Details...</h2>
+
+  <script type="module" src="js/verify.js"></script>
+</body>
+</html>
