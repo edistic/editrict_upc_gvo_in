@@ -9,8 +9,12 @@ const urlParams = new URLSearchParams(window.location.search);
 const certNo = urlParams.get('cert_no');
 
 async function verifyCertificate() {
+  // Loader element ko select kiya
+  const loader = document.getElementById('divLoading');
+
   if (!certNo) {
-    document.getElementById('loading-msg').innerText = "Invalid QR Code or Certificate Number Missing.";
+    // Agar Certificate Number na ho, toh loader hata kar error dikhayega
+    loader.innerHTML = "<h2 style='text-align:center; margin-top:50px; font-family:sans-serif; color:red; background: white; padding: 20px; display: inline-block; border-radius: 8px;'>Invalid QR Code or Certificate Number Missing.</h2>";
     return;
   }
 
@@ -19,14 +23,15 @@ async function verifyCertificate() {
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {
-      document.getElementById('loading-msg').innerText = "No Record Found for this Certificate Number!";
-      document.getElementById('loading-msg').style.color = "red";
+      // Agar record na mile toh spinner hata kar error show karega
+      loader.innerHTML = "<h2 style='text-align:center; margin-top:50px; font-family:sans-serif; color:red; background: white; padding: 20px; display: inline-block; border-radius: 8px;'>No Record Found for this Certificate Number!</h2>";
     } else {
       let certData = null;
       querySnapshot.forEach((doc) => {
         certData = doc.data();
       });
 
+      // Data ko HTML me set kar rahe hain
       document.getElementById('d_app_no').innerText = certData.app_no || "-";
       document.getElementById('d_cert_no').innerText = certData.cert_no || "-";
       document.getElementById('d_issue_date').innerText = certData.issue_date || "-";
@@ -49,11 +54,16 @@ async function verifyCertificate() {
       const now = new Date();
       document.getElementById('current_time').innerText = "Certificate Verification as on : " + now.toLocaleString();
 
-      document.getElementById('loading-msg').style.display = 'none';
+      // ✅ MAIN ANIMATION LOGIC ✅
+      // Data fetch hote hi loading animation ko hide karenge 
+      loader.classList.remove('show');
+      loader.style.display = 'none'; 
+      // Aur main details wala page show karenge
       document.getElementById('main-content').style.display = 'block';
     }
   } catch (error) {
-    document.getElementById('loading-msg').innerText = "Error connecting to Database: " + error.message;
+     // Network ya database ki koi error ho toh spinner rok kar yahan bata dega
+     loader.innerHTML = "<h2 style='text-align:center; margin-top:50px; font-family:sans-serif; color:red; background: white; padding: 20px; display: inline-block; border-radius: 8px;'>Error connecting to Database: " + error.message + "</h2>";
   }
 }
 
